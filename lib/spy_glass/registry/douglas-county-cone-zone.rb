@@ -29,7 +29,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
       'id' => item['roadway_impacts_eid'],
       'type' => 'Feature',
       'geometry' => {
-        'type' => 'Line',
+        'type' => 'LineString',
         'coordinates' => [
           line
         ]
