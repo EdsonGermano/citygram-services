@@ -21,9 +21,9 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
     end
 
     title = <<-TITLE
-      A(n) $#{item['permit_job_type'].to_s} was filed for $#{item['original_address_1'].to_s} on $#{item['applied_date'].to_s} for $#{item['description'].to_s}
-      Status: $#{item['status_current'].to_s}
-      Proposed Value: $#{item['job_valuation'].to_s}
+      A(n) #{item['permit_job_type'].to_s} Permit was filed for #{item['original_address_1'].to_s} on #{item['applied_date'].to_s} for #{item['description'].to_s}
+      Status: #{item['status_current'].to_s}
+      Proposed Value: #{item['job_valuation'].to_s}
     TITLE
 
     {
