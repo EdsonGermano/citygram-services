@@ -3,7 +3,7 @@ require 'spy_glass/registry'
 time_zone = ActiveSupport::TimeZone["Pacific Time (US & Canada)"]
 
 opts = {
-  path: '/douglas-county-permit-info',
+  path: '/douglas-county-permit-information',
   cache: SpyGlass::Cache::Memory.new(expires_in: 300),
   source: 'https://data.douglas.co.us/resource/bedb-m69t.json?'+Rack::Utils.build_query({
     '$limit' => 1500
