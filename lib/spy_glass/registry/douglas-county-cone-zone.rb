@@ -18,7 +18,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
       # latlng = item['shape'].gsub(/[()]/, '').split(/\s*,\s*/)
       # longitude = latlng[1].to_f
       # latitude = latlng[0].to_f
-      line = item['shape']['geometry']['paths']
+      line = item['shape']['geometry']['paths'][0]
     end
 
     title = <<-TITLE
