@@ -22,7 +22,11 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
     end
 
     title = <<-TITLE
-      #{item['project_name']}
+      #{item['project_name']}#{item['project_type_category']}
+      #{item['project_type']}
+      Starts on #{Date.strptime(item['start_date'].to_s, '%s')}, end on #{Date.strptime(item['end_date'].to_s, '%s')}
+      For more information, contact #{item['project_contact']} #{item['project_contact_email']} #{item['project_contact_phone']}
+      #{item['impacts']}
     TITLE
 
     {
