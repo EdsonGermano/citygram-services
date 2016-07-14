@@ -1,5 +1,5 @@
 require 'spy_glass/registry'
-require 'indefinite_article'
+# require 'indefinite_article'
 
 time_zone = ActiveSupport::TimeZone["Pacific Time (US & Canada)"]
 
@@ -22,7 +22,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
     end
 
     title = <<-TITLE
-      #{item['permit_job_type'].to_s.indefinite_article.capitalize} #{item['permit_job_type'].to_s} Permit was filed for #{item['original_address_1'].to_s} on #{DateTime.iso8601(item['applied_date'].to_s).strftime("%m-%d-%Y")} for #{item['description'].to_s}
+       #{item['permit_job_type'].to_s} Permit was filed for #{item['original_address_1'].to_s} on #{DateTime.iso8601(item['applied_date'].to_s).strftime("%m-%d-%Y")} for #{item['description'].to_s}
       Status: #{item['status_current'].to_s}
       Proposed Value: #{Money.us_dollar(item['job_valuation'].to_f * 100).format(:no_cents_if_whole => true)}
     TITLE
