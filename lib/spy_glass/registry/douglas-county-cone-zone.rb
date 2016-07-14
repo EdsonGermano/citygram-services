@@ -1,5 +1,4 @@
 require 'spy_glass/registry'
-require 'Date'
 
 time_zone = ActiveSupport::TimeZone["Pacific Time (US & Canada)"]
 
