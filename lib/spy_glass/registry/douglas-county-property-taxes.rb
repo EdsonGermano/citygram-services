@@ -15,7 +15,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
 
     case item['location_1']
     when nil
-    else 
+    else
       longitude = item['location_1']['longitude'].to_f
       latitude = item['location_1']['latitude'].to_f
     end
@@ -26,7 +26,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
         case item['exemption_code']
         when nil
           "The #{item['tax_year']} valuation for this property is $#{item['total_actual']}, with an assessed value of $#{item['total_assessed']}. Tax for this property is $#{item['taxes']}."
-        else 
+        else
           "The #{item['tax_year']} valuation for this property is $#{item['total_actual']}, with an assessed value of $#{item['total_assessed']}. Tax for this property is $#{item['taxes']}. This property has an exemption, reducing the tax amount to $#{item['tax_bill_amount']}"
         end
       else

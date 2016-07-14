@@ -1,4 +1,5 @@
 require 'spy_glass/registry'
+require 'Date'
 
 time_zone = ActiveSupport::TimeZone["Pacific Time (US & Canada)"]
 
@@ -21,12 +22,18 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
       line = item['shape']['geometry']['paths']
     end
 
+    case item['impacts']
+    when nil
+    else
+      impact = item['impacts']
+    end
+
     title = <<-TITLE
       #{item['project_name']}#{item['project_type_category']}
       #{item['project_type']}
-      Starts on #{Date.strptime(item['start_date'].to_s, '%s')}, end on #{Date.strptime(item['end_date'].to_s, '%s')}
+      Starts on #{DateTime.strptime(item['start_date'].to_s, '%s').strftime("%m-%d-%Y")}, end on #{DateTime.strptime(item['end_date'].to_s, '%s').strftime("%m-%d-%Y")}
       For more information, contact #{item['project_contact']} #{item['project_contact_email']} #{item['project_contact_phone']}
-      #{item['impacts']}
+      #{impact}
     TITLE
 
     {
