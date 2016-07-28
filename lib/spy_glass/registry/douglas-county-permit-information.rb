@@ -13,7 +13,7 @@ opts = {
 
 SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
   features = collection.map do |item|
-    if item['status_current'] == "ISSUED"
+    if item['status_current'] == "ISSUED" && item['location']['longitude'] && item['location']['latitude']
       case item['location']
       when nil
       else
