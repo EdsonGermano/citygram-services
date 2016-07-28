@@ -42,6 +42,6 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
     end
   end
 
-  {'type' => 'FeatureCollection', 'features' => features}
+  {'type' => 'FeatureCollection', 'features' => features.compact}
 end
 
