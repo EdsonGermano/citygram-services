@@ -6,7 +6,7 @@ time_zone = ActiveSupport::TimeZone["Pacific Time (US & Canada)"]
 opts = {
   path: '/douglas-county-permit-information',
   cache: SpyGlass::Cache::Memory.new(expires_in: 300),
-  source: 'https://data.douglas.co.us/resource/bedb-m69t.json?'+Rack::Utils.build_query({
+  source: 'https://data.douglas.co.us/resource/28v6-p9wg.json?'+Rack::Utils.build_query({
     '$limit' => 1500
   })
 }
@@ -17,12 +17,12 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
     case item['location']
     when nil
     else
-      longitude = item['location']['coordinates'][0].to_f
-      latitude = item['location']['coordinates'][1].to_f
+      longitude = item['location']['longitude'].to_f
+      latitude = item['location']['latitude'].to_f
     end
 
     title = <<-TITLE
-      #{item['permit_job_type'].to_s.indefinite_article.capitalize} #{item['permit_job_type'].to_s} Permit was filed for #{item['original_address_1'].to_s} on #{DateTime.iso8601(item['applied_date'].to_s).strftime("%m-%d-%Y")} for #{item['description'].to_s}
+      #{item['permit_job_type'].to_s.indefinite_article.capitalize} #{item['permit_job_type'].to_s} Permit was filed for #{item['original_address_1'].to_s} on #{Time.at(item['applied_date']).strftime("%m-%d-%Y")} for #{item['description'].to_s}
       Status: #{item['status_current'].to_s}
       Proposed Value: #{Money.us_dollar(item['job_valuation'].to_f * 100).format(:no_cents_if_whole => true)}
     TITLE
