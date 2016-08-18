@@ -15,7 +15,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
 
     case item['location']
     when nil
-    else 
+    else
       longitude = item['location']['longitude'].to_f
       latitude = item['location']['latitude'].to_f
     end
@@ -35,7 +35,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
           latitude
         ]
       },
-      'properties' => item.merge('title' => title)
+      'properties' => item.merge('title' => title.squeeze(' '))
     }
   end
 
