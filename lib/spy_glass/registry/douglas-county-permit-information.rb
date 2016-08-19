@@ -8,7 +8,7 @@ opts = {
   cache: SpyGlass::Cache::Memory.new(expires_in: 300),
   source: 'https://data.douglas.co.us/resource/28v6-p9wg.json?'+Rack::Utils.build_query({
     '$limit' => 1500,
-    '$where' => 'issued_date > "' + 1.month.ago.utc.iso8601 + '"'
+    '$where' => 'issued_date>"' + 1.month.ago.utc.iso8601 + '"'
   })
 }
 
