@@ -24,7 +24,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
     TITLE
 
     {
-      'id' => item.id,
+      'id' => item['id'],
       'type' => 'Feature',
       'geometry' => {
         'type' => 'Point',
