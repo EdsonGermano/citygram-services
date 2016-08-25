@@ -48,7 +48,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
           latitude
         ]
       },
-      'properties' => item.merge('title' => title.squeeze(' '))
+      'properties' => item.merge('title' => title)
     }
   end
 

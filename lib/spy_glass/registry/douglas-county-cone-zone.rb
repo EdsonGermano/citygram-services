@@ -42,7 +42,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
         'type' => 'MultiLineString',
         'coordinates' => line
       },
-      'properties' => item.merge('title' => title.squeeze(' '))
+      'properties' => item.merge('title' => title)
     }
   end
 

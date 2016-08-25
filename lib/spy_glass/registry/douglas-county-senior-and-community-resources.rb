@@ -24,7 +24,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
     TITLE
 
     {
-      'id' => item['telephone'],
+      'id' => item.id,
       'type' => 'Feature',
       'geometry' => {
         'type' => 'Point',
@@ -33,7 +33,7 @@ SpyGlass::Registry << SpyGlass::Client::Socrata.new(opts) do |collection|
           item['location_1']['latitude'].to_f
         ]
       },
-      'properties' => item.merge('title' => title.squeeze(' '))
+      'properties' => item.merge('title' => title)
     }
   end
 
